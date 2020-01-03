@@ -1,0 +1,36 @@
+{
+  "name": "sispartapi",
+  "version": "1.0.0",
+  "description": "SispartApi",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:start": "nodemon app.js --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocfranz/sispartApi.git"
+  },
+  "keywords": [
+    "sispart"
+  ],
+  "author": "ocFranzz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ocfranz/sispartApi/issues"
+  },
+  "homepage": "https://github.com/ocfranz/sispartApi#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7"
+  }
+}
