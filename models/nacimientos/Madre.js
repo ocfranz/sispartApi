@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const connection = require('../../db/connection');
 
+const Nacido = require('./Nacido');
 const Madre = connection.define(
     'madres',
     {
@@ -81,6 +82,5 @@ const Madre = connection.define(
         }
     }
 );
-
 
 module.exports = Madre;

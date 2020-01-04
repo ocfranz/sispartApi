@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connection from './db/connection';
 
+import LugarOcurrencia from './models/common/LugarOcurrencia';
 import CentroPoblado from './models/common/CentroPoblado';
 import Nacionalidad from './models/common/Nacionalidad';
 import Distritos from './models/common/Distritos';
@@ -18,12 +19,12 @@ app.use(express.static(__dirname + "/src"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
-
+LugarOcurrencia.sync({force : false}).then(()=>{console.log('creates')});
 Distritos.sync({force : false}).then(()=>{console.log('creates')});
 
-Madre.sync({force : false}).then(()=>{console.log('creates')})
-Declarante.sync({force : false}).then(()=>{console.log('creates')})
-Nacido.sync({force : false}).then(()=>{console.log('creates')})
+Madre.sync({force : true}).then(()=>{console.log('creates')})
+Declarante.sync({force : true}).then(()=>{console.log('creates')})
+Nacido.sync({force : true}).then(()=>{console.log('creates')})
 /**Test */
 /*
 Padre

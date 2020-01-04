@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const connection = require('../../db/connection');
-
+const Nacido = require('./Nacido');
 const Declarante = connection.define(
     'declarantes',
     {
@@ -45,6 +45,4 @@ const Declarante = connection.define(
         }
     }
 );
-
-
 module.exports = Declarante;
