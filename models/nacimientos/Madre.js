@@ -31,12 +31,14 @@ const Madre = connection.define(
             allowNull : false,
         },
         direccion  : {type : Sequelize.STRING(70)},
+        /*
         idNacionalidad : {
             type : Sequelize.INTEGER,
             references :{
                 model : 'nacionalidades',
                 key : 'id'
             },
+            onDelete: 'CASCADE',
             allowNull : false
         },
         idDepartamento : {
@@ -45,6 +47,7 @@ const Madre = connection.define(
                 model : 'departamentos',
                 key : 'id'
             },
+            onDelete: 'CASCADE',
             allowNull : false
         },
         idProvincia: {
@@ -53,6 +56,7 @@ const Madre = connection.define(
                 model : 'provincias',
                 key : 'id'
             },
+            onDelete: 'CASCADE',
             allowNull : false
         },
         idDistrito: {
@@ -61,6 +65,7 @@ const Madre = connection.define(
                 model : 'distritos',
                 key : 'id'
             },
+            onDelete: 'CASCADE',
             allowNull : false
         },
         idCentroPoblado: {
@@ -69,7 +74,8 @@ const Madre = connection.define(
                 model : 'centros_poblados',
                 key : 'id'
             },
-        },
+            onDelete: 'CASCADE',
+        },*/
         createdAt:{
             type: 'TIMESTAMP',
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

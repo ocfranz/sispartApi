@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const connection = require('../../db/connection');
 
+const Nacionalidad = require('../common/Nacionalidad');
+
 const Padre = connection.define(
     'padres',
     {
@@ -30,14 +32,6 @@ const Padre = connection.define(
             type : Sequelize.STRING(30),
             allowNull : false,
         },
-        idNacionalidad : {
-            type : Sequelize.INTEGER,
-            references :{
-                model : 'nacionalidades',
-                key : 'id'
-            },
-            allowNull : false
-        },
         createdAt:{
             type: 'TIMESTAMP',
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
@@ -52,5 +46,10 @@ const Padre = connection.define(
     }
 );
 
+
+Padre.associate = ()=>{
+    Padre.hasOne(Nacionalidad, {foreignKey : 'idNacionalidad'});
+    
+};
 
 module.exports = Padre;

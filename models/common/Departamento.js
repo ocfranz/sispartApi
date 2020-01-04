@@ -36,6 +36,9 @@ const Departamento = connection.define(
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false
         }
+    },
+    {
+        truncate: { cascade: true }
     }
 )
 

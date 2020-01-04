@@ -1,11 +1,13 @@
 const Sequelize = require('sequelize');
 const connection = require('../../db/connection');
 
-const ActaNacimiento = connection.define(
-    'actas_nacimientos',
+const LibroNacimiento = connection.define(
+    'libros_nacimientos',
     {
         id :{primaryKey : true, type : Sequelize.INTEGER, autoIncrement : true},
-        numeroActa : { type : Sequelize.STRING(10), allowNull : false, },
+        numeroLibro : { type : Sequelize.INTEGER, allowNull : false, unique : true},
+        fechaApertura : { type : Sequelize.DATEONLY, allowNull : true},
+        fechaCierre : { type : Sequelize.DATEONLY, allowNull : true},
         observacion : { type : Sequelize.STRING(225) },
         createdAt:{
             type: Sequelize.DATE,
@@ -19,4 +21,4 @@ const ActaNacimiento = connection.define(
         }
     }
 );
-module.exports = ActaNacimiento;
+module.exports = LibroNacimiento;

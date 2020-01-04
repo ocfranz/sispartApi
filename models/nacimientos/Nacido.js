@@ -1,15 +1,6 @@
 const Sequelize = require('sequelize');
 const connection = require('../../db/connection');
 
-const LugarOcurrencia = require('../common/LugarOcurrencia');
-const Departamento = require('../common/Departamento');
-const Provincia = require('../common/Provincia');
-const Distrito = require('../common/Distritos');
-const CentroPoblado = require('../common/CentroPoblado');
-const Padre = require('../nacimientos/Padre');
-const Madre = require('../nacimientos/Madre');
-const Declarante = require('../nacimientos/Declarante');
-
 const Nacido = connection.define(
     'nacidos',
     {
@@ -21,6 +12,7 @@ const Nacido = connection.define(
         fechaNacimiento : {type : Sequelize.DATEONLY, allowNull : true},
         horaNacimiento : {type : Sequelize.TIME, allowNull : true},
         fechaRegistro : { type : Sequelize.DATEONLY, allowNull : false},
+        /*
         idLugarOcurrencia : {
             type : Sequelize.INTEGER,
             references :{
@@ -61,12 +53,14 @@ const Nacido = connection.define(
             },
             allowNull : false
         },
+        
         idPadre : {
             type : Sequelize.INTEGER,
             references :{
                 model : 'padres',
                 key : 'id'
             },
+            onDelete: 'CASCADE',
             allowNull : false
         },
         idMadre : {
@@ -75,24 +69,10 @@ const Nacido = connection.define(
                 model : 'madres',
                 key : 'id'
             },
+            onDelete: 'CASCADE',
             allowNull : false
         },
-        idPrimerDeclarante : {
-            type : Sequelize.INTEGER,
-            references :{
-                model : 'declarantes',
-                key : 'id'
-            },
-            allowNull : true
-        },
-        idSegundoDeclarante : {
-            type : Sequelize.INTEGER,
-            references :{
-                model : 'declarantes',
-                key : 'id'
-            },
-            allowNull : true
-        },
+        */
         createdAt:{
             type: Sequelize.DATE,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
