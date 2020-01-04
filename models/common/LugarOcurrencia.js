@@ -2,28 +2,27 @@ const Sequelize = require('sequelize');
 const connection = require('../../db/connection');
 
 /**
- * Departamenot model
- * @param {INTEGER} id : Departament id 
- * @param {STRING} ubigeo : Departamento ubigeo
- * @param {STRING} departamento : Name
+ * Catalog Database table
+ * Lugar Ocurrencia model
+ * @param {INTEGER} id : Lugar Ocurrencia id 
+ * @param {STRING} tipoLugar : Lugar Ocurrencia type of place
+ * @param {STRING} nombre : Lugar Ocurrencia name of place
  * 
  */
 
-const Departamento = connection.define(
-    'departamentos',
+const LugarOcurrencia = connection.define(
+    'lugares_ocurrencias',
     {
         id :{
             primaryKey : true,
             type : Sequelize.INTEGER,
             autoIncrement : true,  
         },
-        ubigeo : {
-            type : Sequelize.STRING(10),
-            allowNull : false,
-            unique : true
-        },
-        departamento : {
+        tipoLugar :{
             type : Sequelize.STRING(100),
+        },
+        nombre  : {
+            type : Sequelize.STRING(50),
             allowNull : false,
         },
         createdAt:{
@@ -40,4 +39,4 @@ const Departamento = connection.define(
 )
 
 
-module.exports = Departamento;
+module.exports = LugarOcurrencia;

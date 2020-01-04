@@ -26,8 +26,16 @@ const Provincia = connection.define(
             type : Sequelize.STRING(100),
             allowNull : false,
         },
-        createdAt :Sequelize.DATE,
-        updatedAt : Sequelize.DATE
+        createdAt:{
+            type: 'TIMESTAMP',
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+        },
+        updatedAt:{
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+        }
     }
 )
 

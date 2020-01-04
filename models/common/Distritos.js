@@ -2,15 +2,15 @@ const Sequelize = require('sequelize');
 const connection = require('../../db/connection');
 
 /**
- * Departamenot model
- * @param {INTEGER} id : Departament id 
- * @param {STRING} ubigeo : Departamento ubigeo
- * @param {STRING} departamento : Name
+ * Distrito model
+ * @param {INTEGER} id : Distrito id 
+ * @param {STRING} ubigeo : Distrito ubigeo
+ * @param {STRING} distrito : Distrito name
  * 
  */
 
-const Departamento = connection.define(
-    'departamentos',
+const Distrito = connection.define(
+    'distritos',
     {
         id :{
             primaryKey : true,
@@ -22,7 +22,7 @@ const Departamento = connection.define(
             allowNull : false,
             unique : true
         },
-        departamento : {
+        distrito  : {
             type : Sequelize.STRING(100),
             allowNull : false,
         },
@@ -40,4 +40,4 @@ const Departamento = connection.define(
 )
 
 
-module.exports = Departamento;
+module.exports = Distrito;
