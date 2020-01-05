@@ -16,7 +16,6 @@ const connection = new Sequelize(
             idle: 10000
          },
     }
-    
 )
 connection.authenticate()
   .then(() => {

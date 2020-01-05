@@ -1,47 +1,48 @@
+'use strict';
 const Sequelize = require('sequelize');
-const connection = require('../../db/connection');
 
-const OficinaRegistral = connection.define(
-    'oficinas_registrales',
-    {
-        id :{
-            primaryKey : true,
-            type : Sequelize.INTEGER,
-            autoIncrement : true,  
-        },
-        /*  
-        idDepartamento : {
-            type : Sequelize.INTEGER,
-            references :{
-                model : 'departamentos',
-                key : 'id'
+module.exports = (sequelize, DataTypes)=>{
+    return sequelize.define(
+        'oficinas_registrales',
+        {
+            id :{
+                primaryKey : true,
+                type : Sequelize.INTEGER,
+                autoIncrement : true,  
             },
-            allowNull : false
-        },
-        idProvincia : {
-            type : Sequelize.INTEGER,
-            references :{
-                model : 'provincias',
-                key : 'id'
+            /*  
+            idDepartamento : {
+                type : Sequelize.INTEGER,
+                references :{
+                    model : 'departamentos',
+                    key : 'id'
+                },
+                allowNull : false
             },
-            allowNull : false
-        },
-        idDistrito : {
-            type : Sequelize.INTEGER,
-            references :{
-                model : 'distritos',
-                key : 'id'
+            idProvincia : {
+                type : Sequelize.INTEGER,
+                references :{
+                    model : 'provincias',
+                    key : 'id'
+                },
+                allowNull : false
             },
-            allowNull : false
-        },
-        idCentroPoblado : {
-            type : Sequelize.INTEGER,
-            references :{
-                model : 'centros_poblados',
-                key : 'id'
+            idDistrito : {
+                type : Sequelize.INTEGER,
+                references :{
+                    model : 'distritos',
+                    key : 'id'
+                },
+                allowNull : false
             },
-            allowNull : false
-        }*/
-    }
-);
-module.exports = OficinaRegistral;
+            idCentroPoblado : {
+                type : Sequelize.INTEGER,
+                references :{
+                    model : 'centros_poblados',
+                    key : 'id'
+                },
+                allowNull : false
+            }*/
+        }
+    );
+}

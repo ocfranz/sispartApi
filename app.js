@@ -2,7 +2,8 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import cors from "cors";
-import connection from './db/connection';
+
+import db from './models';
 
 const actasRouter = require('./routes/actas');
 
@@ -28,23 +29,32 @@ app.use(express.static(__dirname + "/src"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
-
+/*
 Distritos.sync({force : true}).then(()=>{console.log('creates')});
 Provincia.sync({force : true}).then(()=>{console.log('creates')});
 CentroPoblado.sync({force : true}).then(()=>{console.log('creates')});
-Nacionalidad.sync({force : true}).then(()=>{console.log('creates')});
+
 Departamento.sync({force : true}).then(()=>{console.log('creates')});
 LugarOcurrencia.sync({force : true}).then(()=>{console.log('creates')});
 OficinaRegistral.sync({force : true}).then(()=>{console.log('creates')});
 Registrador.sync({force : true}).then(()=>{console.log('creates')});
+
+Nacionalidad.sync({force : true}).then(()=>{console.log('creates')});
+
 Padre.sync({force : true}).then(()=>{console.log('creates')});
+
+Padre.hasOne(Nacionalidad);
+Padre.associate()
+Nacionalidad.belongsTo(Padre);
+console.log()*/
+/*
 Madre.sync({force : true}).then(()=>{console.log('creates')});
 Declarante.sync({force : true}).then(()=>{console.log('creates')});
 Nacido.sync({force : true}).then(()=>{console.log('creates')});
 
 ActaNacimiento.sync({force : true}).then(()=>{console.log('creates')});
-LibroNacimiento.sync({force : true}).then(()=>{console.log('creates')});
-// 
+LibroNacimiento.sync({force : true}).then(()=>{console.log('creates')});*/
+
 
 
 /**Test */
@@ -61,8 +71,10 @@ Padre
             idNacionalidad : 1
         });
     })*/
+db.sequelize.sync({force : true})
+    .then(()=>console.log('COneccted'))
+    .catch((err)=>console.log(err));
 
-app.use('/actas', actasRouter);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is listening on port ${process.env.PORT}`)
