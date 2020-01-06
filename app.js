@@ -64,16 +64,17 @@ Padre
     .then(()=>{
         return Padre.create({
             nombres: 'Test test',
-            apellidoPaterno : 'test',
-            apellidoMaterno : 'Tets',
-            tipoIdentidad : 'LIBRETA MILITAR',
-            numeroIdentidad : '70541894',
+            apellido_paterno : 'test',
+            apellido_materno : 'Tets',
+            tipo_identidad : 'LIBRETA MILITAR',
+            numero_identidad : '70541894',
             idNacionalidad : 1
         });
     })*/
+    /**/ 
 db.sequelize.sync({force : true})
     .then(()=>console.log('COneccted'))
-    .catch((err)=>console.log(err));
+    .catch((err)=>console.log(err));/**/
 
 
 app.listen(process.env.PORT, () =>

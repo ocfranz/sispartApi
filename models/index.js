@@ -3,8 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
 const config = require('../config/config');
+const {getModelsFromDirectory} = require('../core/Utils');
 const db = {};
 const DIR  = `${__dirname}`;
 const { database, username, password, host} = config.db;
@@ -20,7 +20,8 @@ const sequelize = new Sequelize(database, username, password,
         idle: 10000
      },
 });
-sequelize.authenticate()
+sequelize
+    .authenticate()
     .then(() => {
         console.log('Connected'); 
     })
@@ -28,8 +29,8 @@ sequelize.authenticate()
         console.error('Erro:', err); 
     });
 
-fileList(DIR).map((k,i)=>{
-    console.log(k)
+getModelsFromDirectory(DIR)
+    .map((k)=>{
     if(!k.includes('index.js')){
         const model = sequelize['import'](k);
         db[model.name] = model;
@@ -37,8 +38,8 @@ fileList(DIR).map((k,i)=>{
 })
 
 Object.keys(db).forEach(modelName => {
+    console.log(modelName);
     if (db[modelName].associate) {
-        console.log(db)
         db[modelName].associate(db);
     }
 });
@@ -46,12 +47,79 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+//Associations 
 
-function fileList(dir) {
-    return fs.readdirSync(dir).reduce(function(list, file) {
-      var name = path.join(dir, file);
-      var isDir = fs.statSync(name).isDirectory();
-      return list.concat(isDir ? fileList(name) : [name]);
-    }, []);
-  }
+// Padres 
+db.padres.belongsTo(db.nacionalidades, {
+    as: 'Nacionalidad',
+    foreignKey:{ name :'idNacionalidad', allowNull: false},
+    onDelete : 'CASCADE',
+});
+
+// Madres 
+db.madres.belongsTo(db.nacionalidades, {
+    as: 'Nacionalidad',
+    foreignKey:{ name :'id_nacionalidad', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.madres.belongsTo(db.departamentos, {
+    as: 'Departamento',
+    foreignKey:{ name :'id_departamento', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.madres.belongsTo(db.provincias, {
+    as: 'Provincia',
+    foreignKey:{ name :'id_provincia', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.madres.belongsTo(db.distritos, {
+    as: 'Distrito',
+    foreignKey:{ name :'id_distritos', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.madres.belongsTo(db.centros_poblados, {
+    as: 'CentroPoblado',
+    foreignKey:{ name :'id_centro_poblado', allowNull: true},
+    onDelete : 'CASCADE',
+});
+
+//Nacidos
+
+db.nacidos.belongsTo(db.lugares_ocurrencias, {
+    as: 'LugarNacimiento',
+    foreignKey:{ name :'id_lugar_ocurrencia', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.nacidos.belongsTo(db.departamentos, {
+    as: 'Departamento',
+    foreignKey:{ name :'id_departamento', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.nacidos.belongsTo(db.provincias, {
+    as: 'Provincia',
+    foreignKey:{ name :'id_provincia', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.nacidos.belongsTo(db.distritos, {
+    as: 'Distrito',
+    foreignKey:{ name :'id_distritos', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.nacidos.belongsTo(db.centros_poblados, {
+    as: 'CentroPoblado',
+    foreignKey:{ name :'id_centro_poblado', allowNull: true},
+    onDelete : 'CASCADE',
+});
+db.nacidos.belongsTo(db.padres, {
+    as: 'Padre',
+    foreignKey:{ name :'id_padre', allowNull: false},
+    onDelete : 'CASCADE',
+});
+db.nacidos.belongsTo(db.madres, {
+    as: 'Madre',
+    foreignKey:{ name :'id_madre', allowNull: false},
+    onDelete : 'CASCADE',
+});
+
+
+module.exports = db;

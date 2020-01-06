@@ -14,68 +14,23 @@ module.exports = (sequelize, DataTypes)=>{
                 type : Sequelize.STRING(45),
                 allowNull : false,
             },
-            apellidoPaterno : {
+            apellido_paterno : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
             },
-            apellidoMaterno : {
+            apellido_materno : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
             },
-            tipoIdentidad : {
+            tipo_identidad : {
                 type : Sequelize.ENUM('DNI', 'LIBRETA MILITAR', 'CARNET DE EXTRANJERÍA'),
                 allowNull : false,
             },
-            numeroIdentidad : {
+            numero_identidad : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
             },
             direccion  : {type : Sequelize.STRING(70)},
-            /*
-            idNacionalidad : {
-                type : Sequelize.INTEGER,
-                references :{
-                    model : 'nacionalidades',
-                    key : 'id'
-                },
-                onDelete: 'CASCADE',
-                allowNull : false
-            },
-            idDepartamento : {
-                type : Sequelize.INTEGER,
-                references :{
-                    model : 'departamentos',
-                    key : 'id'
-                },
-                onDelete: 'CASCADE',
-                allowNull : false
-            },
-            idProvincia: {
-                type : Sequelize.INTEGER,
-                references :{
-                    model : 'provincias',
-                    key : 'id'
-                },
-                onDelete: 'CASCADE',
-                allowNull : false
-            },
-            idDistrito: {
-                type : Sequelize.INTEGER,
-                references :{
-                    model : 'distritos',
-                    key : 'id'
-                },
-                onDelete: 'CASCADE',
-                allowNull : false
-            },
-            idCentroPoblado: {
-                type : Sequelize.INTEGER,
-                references :{
-                    model : 'centros_poblados',
-                    key : 'id'
-                },
-                onDelete: 'CASCADE',
-            },*/
             createdAt:{
                 type: 'TIMESTAMP',
                 defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

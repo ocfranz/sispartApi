@@ -14,19 +14,19 @@ module.exports = (sequelize, DataTypes)=>{
                 type : Sequelize.STRING(45),
                 allowNull : false,
             },
-            apellidoPaterno : {
+            apellido_paterno : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
             },
-            apellidoMaterno : {
+            apellido_materno : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
             },
-            tipoIdentidad : {
+            tipo_identidad : {
                 type : Sequelize.ENUM('DNI', 'LIBRETA MILITAR', 'CARNET DE EXTRANJERÍA'),
                 allowNull : false,
             },
-            numeroIdentidad : {
+            numero_identidad : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
             },

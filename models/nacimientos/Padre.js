@@ -14,34 +14,22 @@ module.exports = (sequelize, DataTypes)=>{
                 type : Sequelize.STRING(45),
                 allowNull : false,
             },
-            apellidoPaterno : {
+            apellido_paterno : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
             },
-            apellidoMaterno : {
+            apellido_materno : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
             },
-            tipoIdentidad : {
+            tipo_identidad : {
                 type : Sequelize.ENUM('DNI', 'LIBRETA MILITAR', 'CARNET DE EXTRANJERÍA'),
                 allowNull : false,
             },
-            
-            numeroIdentidad : {
+            numero_identidad : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
-            },/*
-            idNacionalidad : {
-                type : Sequelize.INTEGER,
-                references : {
-                    model : 'nacionalidades',
-                    key : 'id',
-                    
-                }, 
-                onDelete: "RESTRICT",   
-                allowNull : false,
-                
-            },*/
+            },
             createdAt:{
                 type: 'TIMESTAMP',
                 defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

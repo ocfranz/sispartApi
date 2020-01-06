@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes)=>{
         {
             id :{primaryKey : true, type : Sequelize.INTEGER, autoIncrement : true },
             nombres : {type : Sequelize.STRING(45),allowNull : false,},
-            apellidoPaterno : {type : Sequelize.STRING(30),allowNull : false,},
-            apellidoMaterno : {type : Sequelize.STRING(30),allowNull : false, },
+            apellido_paterno : {type : Sequelize.STRING(30),allowNull : false,},
+            apellido_materno : {type : Sequelize.STRING(30),allowNull : false, },
             dni : {type : Sequelize.STRING(8),allowNull : false, unique : true},
             createdAt:{
                 type: Sequelize.DATE,
