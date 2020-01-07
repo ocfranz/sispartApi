@@ -1,7 +1,5 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
 const Sequelize = require('sequelize');
 const config = require('../config/config');
 const {getModelsFromDirectory} = require('../core/Utils');
@@ -38,7 +36,6 @@ getModelsFromDirectory(DIR)
 })
 
 Object.keys(db).forEach(modelName => {
-    console.log(modelName);
     if (db[modelName].associate) {
         db[modelName].associate(db);
     }

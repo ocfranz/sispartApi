@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes)=>{
             numero_identidad : {
                 type : Sequelize.STRING(30),
                 allowNull : false,
+                unique : true
             },
             createdAt:{
                 type: 'TIMESTAMP',
