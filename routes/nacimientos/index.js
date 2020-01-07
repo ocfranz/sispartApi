@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
-const Departamentos = require('../models/common/Departamento');
-
+const db = require('../../models');
 router.get('/', async (req, res) =>{
-    let deparments = await Departamentos.findAll();
+    let nacidos = await db.nacidos.findAll();
     try{
-        res.send({data : deparments});
+        res.send({data : nacidos});
     } catch(err){
         res.send({message : err});
     }

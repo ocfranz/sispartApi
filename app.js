@@ -5,7 +5,7 @@ import cors from "cors";
 
 import db from './models';
 
-const actasRouter = require('./routes/actas');
+const nacimientoRouters = require('./routes/nacimientos');
 
 import LugarOcurrencia from './models/common/LugarOcurrencia';
 import Provincia from './models/common/Provincia';
@@ -35,6 +35,8 @@ db.sequelize.sync({force : false})
         console.log('======= Tables build ===========')
     })
     .catch((err)=>console.log(err));/**/
+
+app.use('/nacimientos', nacimientoRouters);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is listening on port ${process.env.PORT}`)
