@@ -75,8 +75,15 @@ Padre
 db.sequelize.sync({force : true})
     .then(()=>console.log('COneccted'))
     .catch((err)=>console.log(err));/**/
-
-
+/*
+db.padres.create({
+    nombres : 'franz jose',
+    apellido_paterno : 'ogosi',
+    apellido_materno : 'cahuana',
+    tipo_identidad : 'DNI',
+    numero_identidad : '70541894',
+    idNacionalidad : 1
+})*/
 app.listen(process.env.PORT, () =>
   console.log(`Server is listening on port ${process.env.PORT}`)
 );

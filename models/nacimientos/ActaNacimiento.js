@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes)=>{
             id :{primaryKey : true, type : Sequelize.INTEGER, autoIncrement : true},
             numeroActa : { type : Sequelize.STRING(10), allowNull : false, },
             observacion : { type : Sequelize.STRING(225) },
+            status : { type : Sequelize.INTEGER, allowNull : false}, 
             createdAt:{
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

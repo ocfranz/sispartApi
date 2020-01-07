@@ -52,7 +52,7 @@ db.Sequelize = Sequelize;
 // Padres 
 db.padres.belongsTo(db.nacionalidades, {
     as: 'Nacionalidad',
-    foreignKey:{ name :'idNacionalidad', allowNull: false},
+    foreignKey:{ name :'id_nacionalidad', allowNull: false},
     onDelete : 'CASCADE',
 });
 
@@ -121,5 +121,34 @@ db.nacidos.belongsTo(db.madres, {
     onDelete : 'CASCADE',
 });
 
+
+db.nacidos.belongsToMany(db.declarantes, { 
+    through :'nacidos_declarantes', 
+    foreignKey: 'id_nacido',
+    onDelete : 'CASCADE'});
+db.declarantes.belongsToMany(db.nacidos, { 
+    foreignKey: 'id_declarante',
+    through :'nacidos_declarantes',
+    onDelete : 'CASCADE'});
+
+
+db.nacidos.hasOne(db.actas_nacimientos, {
+    foreignKey: 'id_nacido',
+    onDelete : 'CASCADE'
+});
+db.registradores.hasOne(db.actas_nacimientos,{
+    foreignKey: 'id_registrador',
+    onDelete : 'CASCADE'
+});
+db.oficinas_registrales.hasOne(db.actas_nacimientos,{
+    foreignKey: 'id_oficina_registral',
+    onDelete : 'CASCADE'
+});
+
+db.actas_nacimientos.belongsTo(db.libros_nacimientos, {
+    as: 'Libro Nacimiento',
+    foreignKey:{ name :'id_libro_nacimiento', allowNull: false},
+    onDelete : 'CASCADE',
+})
 
 module.exports = db;
